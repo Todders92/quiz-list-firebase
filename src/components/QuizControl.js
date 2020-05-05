@@ -39,7 +39,15 @@ class QuizControl extends React.Component {
   }
 
   handleChangingSelectedQuiz = (id) => {
+    console.log(this.state.userEmail)
     this.props.firestore.get({collection: 'quizzes', doc: id}).then((quiz) => {
+      const quizEmail =  quiz.get("email")
+      console.log(quizEmail);
+      if (this.state.userEmail === quizEmail) {
+        console.log("true")
+      } else {
+        console.log("false")
+      }
       const firestoreQuiz = {
         quizName: quiz.get("quizName"),
         
@@ -60,13 +68,44 @@ class QuizControl extends React.Component {
   }
 
   handleDeletingQuiz = (id) => {
-    this.props.firestore.delete({collection: 'quizzes', doc: id});
-    this.setState({selectedQuiz: null});
+    this.props.firestore.get({collection: 'quizzes', doc: id}).then((quiz) => {
+      const quizEmail =  quiz.get("email")
+      console.log(quizEmail);
+      if (this.state.userEmail === quizEmail) {
+        this.props.firestore.delete({collection: 'quizzes', doc: id});
+        this.setState({selectedQuiz: null});
+      } else {
+        console.log("false")
+      }
+    });
   }
 
   handleEditClick = () => {
-    this.setState({editing: true});
-  }
+    const quizEmail = this.state.selectedQuiz.email;
+      if (this.state.userEmail === quizEmail) {
+        this.setState({editing: true});
+      } else {
+        console.log("false")
+      }
+    };
+  
+
+  // handleEditClick = () => {
+  //   const currentId = this.state.selectedQuiz.id;
+  //   this.props.firestore.get({collection: 'quizzes', doc: currentId}).then((quiz) => {
+  //     const quizEmail =  quiz.get("email")
+  //     console.log(quizEmail);
+  //     if (this.state.userEmail === quizEmail) {
+  //       this.setState({editing: true});
+  //     } else {
+  //       console.log("false")
+  //     }
+  //   });
+  // }
+
+  // handleEditClick = () => {
+  //   this.setState({editing: true});
+  // }
 
   handleEditingQuizInList = () => {
     this.setState({
@@ -94,11 +133,14 @@ class QuizControl extends React.Component {
     )
   } 
     if ((isLoaded(auth)) && (auth.currentUser != null)) {
-      this.state.userEmail = auth.currentUser.email;
+      this.state.userEmail  = auth.currentUser.email;
       console.log(this.state.userEmail);
       if (this.state.editing ) {      
-        currentlyVisibleState = <EditQuizForm quiz = {this.state.selectedQuiz} onEditQuiz = {this.handleEditingQuizInList} />
-        buttonText = "Return to Quiz List";
+        currentlyVisibleState = 
+          <EditQuizForm 
+            quiz = {this.state.selectedQuiz} 
+            onEditQuiz = {this.handleEditingQuizInList} />
+            buttonText = "Return to Quiz List";
       } else if (this.state.selectedQuiz != null) {
         currentlyVisibleState = 
         <QuizDetail 
