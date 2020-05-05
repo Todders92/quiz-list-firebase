@@ -2,9 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function ReusableAnswerForm(props) {
-  console.log(props);
   const { quiz } = props;
-  {console.log(quiz)};
 
   return (
     <React.Fragment>
@@ -15,8 +13,7 @@ function ReusableAnswerForm(props) {
           value={this.state.userEmail} /> */}
           <h1> {quiz.quizName} </h1>
 
-          <h3> {quiz.question1} </h3>
- 
+          <h3> {quiz.question1} </h3>      
         <input
           type='text'
           name='userAnswer1'

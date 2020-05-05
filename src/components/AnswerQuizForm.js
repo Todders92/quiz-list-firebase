@@ -24,11 +24,27 @@ function NewAnswerForm(props){
     return;
   }
 
+  function tallyScore(event) {
+    event.preventDefault();
+    let counter = 0;
+    console.log(props.quiz.answer1)
+      if (props.quiz.answer1 === event.target.userAnswer1.value){
+        counter +=1;
+      }
+      if (props.quiz.answer2 === event.target.userAnswer2.value){
+        counter +=1;
+      }
+      if (props.quiz.answer3 === event.target.userAnswer3.value){
+        counter +=1;
+      }
+      console.log(counter);
+    }
+
   return (
     <React.Fragment>
       <ReusableAnswerForm 
         quiz = {props.quiz}
-        formSubmissionHandler={addAnswersToFirestore}
+        formSubmissionHandler={tallyScore}
         buttonText="Submit answers" />
     </React.Fragment>
   );
