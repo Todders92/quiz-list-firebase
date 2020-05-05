@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-// import ReusableForm from "./ReusableForm";
+import ReusableAnswerForm from "./ReusableAnswerForm";
 import { useFirestore } from 'react-redux-firebase'
 
 function NewAnswerForm(props){
