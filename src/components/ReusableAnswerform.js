@@ -2,6 +2,10 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function ReusableAnswerForm(props) {
+  console.log(props);
+  const { quiz } = props;
+  {console.log(quiz)};
+
   return (
     <React.Fragment>
       <form onSubmit={props.formSubmissionHandler}>
@@ -9,16 +13,22 @@ function ReusableAnswerForm(props) {
           type='hidden'
           name='email'
           value={this.state.userEmail} /> */}
+          <h1> {quiz.quizName} </h1>
+
+          <h3> {quiz.question1} </h3>
+ 
         <input
           type='text'
           name='userAnswer1'
           placeholder='Answer 1' />
 
+          <h3> {quiz.question2} </h3>
           <input
           type='text'
           name='userAnswer2'
           placeholder='Answer 2' />
 
+          <h3> {quiz.question3} </h3>
           <input
           type='text'
           name='userAnswer3'
@@ -31,6 +41,7 @@ function ReusableAnswerForm(props) {
 }
 
 ReusableAnswerForm.propTypes = {
+  quiz: PropTypes.object,
   formSubmissionHandler: PropTypes.func,
   buttonText: PropTypes.string
 };

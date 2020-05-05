@@ -3,6 +3,7 @@ import NewQuizForm from './NewQuizForm';
 import QuizList from './QuizList';
 import QuizDetail from './QuizDetail';
 import EditQuizForm from './EditQuizForm';
+import AnswerQuizForm from './AnswerQuizForm';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import * as a from './../actions';
@@ -15,7 +16,8 @@ class QuizControl extends React.Component {
     this.state = {
       selectedQuiz: null,
       editing: false,
-      userEmail: "string"
+      userEmail: "string",
+      userMatch: false
     };
   }
 
@@ -38,13 +40,22 @@ class QuizControl extends React.Component {
     dispatch(action);
   }
 
+  handleAddingNewAnswerToList = () => {
+    const { dispatch } = this.props;
+    const action = a.toggleForm();
+    dispatch(action);
+  }
+
   handleChangingSelectedQuiz = (id) => {
     console.log(this.state.userEmail)
     this.props.firestore.get({collection: 'quizzes', doc: id}).then((quiz) => {
       const quizEmail =  quiz.get("email")
       console.log(quizEmail);
       if (this.state.userEmail === quizEmail) {
-        console.log("true")
+        this.setState({
+          userMatch: true
+        })
+        console.log(this.state.userMatch);
       } else {
         console.log("false")
       }
@@ -124,13 +135,24 @@ class QuizControl extends React.Component {
             onEditQuiz = {this.handleEditingQuizInList} />
             buttonText = "Return to Quiz List";
       } else if (this.state.selectedQuiz != null) {
-        currentlyVisibleState = 
+        if (this.state.userMatch === true) {
+          currentlyVisibleState = 
         <QuizDetail 
           quiz = {this.state.selectedQuiz} 
           userEmail = {this.state.userEmail}
           onClickingDelete = {this.handleDeletingQuiz} 
           onClickingEdit = {this.handleEditClick} />
         buttonText = "Return to Quiz List";
+        } else {
+        currentlyVisibleState = 
+        <AnswerQuizForm
+          quiz = {this.state.selectedQuiz} 
+          userEmail = {this.state.userEmail}
+          onClickingDelete = {this.handleDeletingQuiz} 
+          onClickingEdit = {this.handleEditClick}
+          onNewAnswerCreation={this.handleAddingNewAnswerToList} />;
+        buttonText = "Return to Quiz List";
+        }
       } else if (this.props.formVisibleOnPage) {
         currentlyVisibleState = 
         <NewQuizForm 

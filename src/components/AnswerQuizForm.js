@@ -4,6 +4,7 @@ import ReusableAnswerForm from "./ReusableAnswerForm";
 import { useFirestore } from 'react-redux-firebase'
 
 function NewAnswerForm(props){
+  console.log(props)
 
   const firestore = useFirestore();
 
@@ -26,6 +27,7 @@ function NewAnswerForm(props){
   return (
     <React.Fragment>
       <ReusableAnswerForm 
+        quiz = {props.quiz}
         formSubmissionHandler={addAnswersToFirestore}
         buttonText="Submit answers" />
     </React.Fragment>
