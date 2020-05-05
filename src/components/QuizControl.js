@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import * as a from './../actions';
 import { withFirestore, isLoaded } from 'react-redux-firebase'
+import { Row, Col, Button } from 'react-bootstrap';
 
 class QuizControl extends React.Component {
 
@@ -130,18 +131,18 @@ class QuizControl extends React.Component {
     if ((isLoaded(auth)) && (auth.currentUser == null)) {
     return (
       <React.Fragment>
-        <h1>You must be signed in to access the queue.</h1>
+          <h1>You must be signed in to access the queue.</h1>
       </React.Fragment>
     )
   } 
     if ((isLoaded(auth)) && (auth.currentUser != null)) {
-      this.state.userEmail  = auth.currentUser.email;
+      this.state.userEmail = auth.currentUser.email;
       if (this.state.editing ) {      
         currentlyVisibleState = 
           <EditQuizForm 
             quiz = {this.state.selectedQuiz} 
             onEditQuiz = {this.handleEditingQuizInList} />
-            buttonText = "Return to Quiz List";
+          buttonText = "Return to Quiz List";
       } else if (this.state.selectedQuiz != null) {
         if (this.state.userMatch === true) {
           currentlyVisibleState = 
@@ -182,8 +183,17 @@ class QuizControl extends React.Component {
       }
       return (
         <React.Fragment>
-          {currentlyVisibleState}
-          <button onClick={this.handleClick}>{buttonText}</button>
+          <Row>
+          <Col md={3}>
+            <Button>Test</Button>
+            <Button>Test</Button>
+            <Button>Test</Button>
+          </Col>
+          <Col md={9}>
+            {currentlyVisibleState}
+            <button onClick={this.handleClick}>{buttonText}</button>
+          </Col>
+          </Row>
         </React.Fragment>
       );
     }

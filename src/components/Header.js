@@ -21,9 +21,6 @@ function Header(){
         <li>
           <Link to="/signin">Sign In</Link>
         </li>
-        <li>
-          <Link to="/userquizes">My Quizes</Link>
-        </li>
       </ul>
     </React.Fragment>
   );
