@@ -1,6 +1,7 @@
 import React from 'react';
 import NewQuizForm from './NewQuizForm';
 import QuizList from './QuizList';
+import UserQuizes from './UserQuizes';
 import QuizDetail from './QuizDetail';
 import EditQuizForm from './EditQuizForm';
 import AnswerQuizForm from './AnswerQuizForm';
@@ -16,6 +17,7 @@ class QuizControl extends React.Component {
     this.state = {
       selectedQuiz: null,
       editing: false,
+      userList: false,
       userEmail: "string",
       userMatch: false
     };
@@ -41,6 +43,12 @@ class QuizControl extends React.Component {
   }
 
   handleAddingNewAnswerToList = () => {
+    const { dispatch } = this.props;
+    const action = a.toggleForm();
+    dispatch(action);
+  }
+
+  handleViewingUserList = () => {
     const { dispatch } = this.props;
     const action = a.toggleForm();
     dispatch(action);
@@ -159,6 +167,12 @@ class QuizControl extends React.Component {
           userEmail = {this.state.userEmail} 
           onNewQuizCreation={this.handleAddingNewQuizToList}  />;
           buttonText = "Return to Quiz List";
+      } else if (this.state.userList) {
+        currentlyVisibleState = 
+        <UserQuizes
+          userEmail = {this.state.userEmail} 
+          onQuizSelection={this.handleChangingSelectedQuiz} />;
+        buttonText = "Add Quiz";
       } else {
         currentlyVisibleState = 
         <QuizList

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 
 function UserQuizes(props){
+  console.log("userlist reached")
 
   useFirestoreConnect([
     { collection: 'quizzes' }
@@ -20,9 +21,9 @@ function UserQuizes(props){
         return <Quiz
           whenQuizClicked = { props.onQuizSelection }
           quizName={quiz.quizName}
-          // question1={quiz.question1}
-          // question2={quiz.question2}
-          // question3={quiz.question3}
+          question1={quiz.question1}
+          question2={quiz.question2}
+          question3={quiz.question3}
           email={quiz.email}
           id={quiz.id}
           key={quiz.id}/>
