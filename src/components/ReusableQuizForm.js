@@ -9,6 +9,10 @@ function ReusableQuizForm(props) {
           type='hidden'
           name='email'
           value={this.state.userEmail} /> */}
+          <input
+          type='text'
+          name='quizName'
+          placeholder='Name your quiz' />
         <input
           type='text'
           name='question1'

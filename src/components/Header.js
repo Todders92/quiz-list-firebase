@@ -12,7 +12,7 @@ function Header(){
   return (
     <React.Fragment>
       <QuizHeader>
-        Quiz lane
+        Quiz List
       </QuizHeader>
       <ul>
         <li>

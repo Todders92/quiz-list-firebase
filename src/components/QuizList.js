@@ -18,13 +18,14 @@ function QuizList(props){
         <hr/>
         {quizzes.map((quiz) => {
         return <Quiz
-          whenQuizClicked = { props.onQSelection }
-            question1={quiz.question1}
-            question2={quiz.question2}
-            question3={quiz.question3}
-            email={quiz.email}
-            id={quiz.id}
-            key={quiz.id}/>
+          whenQuizClicked = { props.onQuizSelection }
+          quizName={quiz.quizName}
+          // question1={quiz.question1}
+          // question2={quiz.question2}
+          // question3={quiz.question3}
+          email={quiz.email}
+          id={quiz.id}
+          key={quiz.id}/>
         })}
       </React.Fragment>
     );

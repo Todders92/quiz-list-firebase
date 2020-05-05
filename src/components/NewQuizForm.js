@@ -13,6 +13,9 @@ function NewQuizForm(props){
     firestore.collection('quizzes').add(
       {
         email: props.userEmail,
+
+        quizName: event.target.quizName.value,
+
         question1: event.target.question1.value,
         answer1: event.target.answer1.value,
 

@@ -7,12 +7,13 @@ function QuizDetail(props){
   return (
     <React.Fragment>
       <h1>Quiz Details</h1>
-      <h3>{props.question1}</h3> 
-      <h5>{props.answer1}</h5>
-      <h3>{props.question2}</h3> 
-      <h5>{props.answer2}</h5>
-      <h3>{props.question3}</h3> 
-      <h5>{props.answer3}</h5>
+      <h1>{quiz.quizName}</h1>
+      <h3>{quiz.question1}</h3> 
+      <h5>{quiz.answer1}</h5>
+      <h3>{quiz.question2}</h3> 
+      <h5>{quiz.answer2}</h5>
+      <h3>{quiz.question3}</h3> 
+      <h5>{quiz.answer3}</h5>
       <p><em>{props.formattedWaitTime}</em></p>
       <p>{props.email}</p>
       <p><em>{quiz.detail}</em></p>

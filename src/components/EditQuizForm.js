@@ -12,9 +12,13 @@ function EditQuizForm (props) {
     event.preventDefault();
     props.onEditQuiz();
     const propertiesToUpdate = {
-      name: event.target.name.value,
-      location: event.target.location.value,
-      detail: event.target.detail.value
+      quizName: event.target.quizName.value,
+      question1: event.target.question1.value,
+      answer1: event.target.answer1.value,
+      question2: event.target.question2.value,
+      answer2: event.target.answer2.value,      
+      question3: event.target.question3.value,
+      answer3: event.target.answer3.value
     }
     return firestore.update({collection: 'quizzes', doc: quiz.id }, propertiesToUpdate)
   }

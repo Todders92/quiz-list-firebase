@@ -41,6 +41,8 @@ class QuizControl extends React.Component {
   handleChangingSelectedQuiz = (id) => {
     this.props.firestore.get({collection: 'quizzes', doc: id}).then((quiz) => {
       const firestoreQuiz = {
+        quizName: quiz.get("quizName"),
+        
         question1: quiz.get("question1"),
         answer1: quiz.get("answer1"),
 
@@ -92,7 +94,7 @@ class QuizControl extends React.Component {
     )
   } 
     if ((isLoaded(auth)) && (auth.currentUser != null)) {
-      // this.state.userEmail = auth.currentUser.email;
+      this.state.userEmail = auth.currentUser.email;
       console.log(this.state.userEmail);
       if (this.state.editing ) {      
         currentlyVisibleState = <EditQuizForm quiz = {this.state.selectedQuiz} onEditQuiz = {this.handleEditingQuizInList} />
