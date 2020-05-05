@@ -7,7 +7,7 @@ import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 function QuizList(props){
 
   useFirestoreConnect([
-    { collection: 'memories' }
+    { collection: 'quizzes' }
   ]);
 
   const quizzes = useSelector(state => state.firestore.ordered.quizzes);
@@ -19,9 +19,9 @@ function QuizList(props){
         {quizzes.map((quiz) => {
         return <Quiz
           whenQuizClicked = { props.onQSelection }
-            name={quiz.name}
-            location={quiz.location}
-            detail={quiz.detail}
+            question1={quiz.question1}
+            question2={quiz.question2}
+            question3={quiz.question3}
             email={quiz.email}
             id={quiz.id}
             key={quiz.id}/>

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ReusableForm from "./ReusableForm";
+import ReusableQuizForm from "./ReusableQuizForm";
 import { useFirestore } from 'react-redux-firebase'
 
 function NewQuizForm(props){
@@ -10,7 +10,7 @@ function NewQuizForm(props){
   function addQuizToFirestore(event) {
     event.preventDefault();
     console.log("in add Quiz to Firestore")
-    firestore.collection('quizes').add(
+    firestore.collection('quizzes').add(
       {
         email: props.userEmail,
         question1: event.target.question1.value,
@@ -30,7 +30,7 @@ function NewQuizForm(props){
 
   return (
     <React.Fragment>
-      {/* <ReusableForm  */}
+      <ReusableQuizForm 
         formSubmissionHandler={addQuizToFirestore}
         buttonText="Submit questions" />
     </React.Fragment>

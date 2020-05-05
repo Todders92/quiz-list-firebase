@@ -1,5 +1,5 @@
 import React from "react";
-import ReusableForm from "./ReusableForm";
+import ReusableQuizForm from "./ReusableQuizForm";
 import PropTypes from "prop-types";
 import { useFirestore } from 'react-redux-firebase';
 
@@ -16,12 +16,12 @@ function EditQuizForm (props) {
       location: event.target.location.value,
       detail: event.target.detail.value
     }
-    return firestore.update({collection: 'quizes', doc: quiz.id }, propertiesToUpdate)
+    return firestore.update({collection: 'quizzes', doc: quiz.id }, propertiesToUpdate)
   }
 
   return (
     <React.Fragment>
-      <ReusableForm 
+      <ReusableQuizForm 
         formSubmissionHandler={handleEditQuizFormSubmission}
         buttonText="Update Quiz" />
     </React.Fragment>
