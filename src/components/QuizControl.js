@@ -90,23 +90,6 @@ class QuizControl extends React.Component {
     };
   
 
-  // handleEditClick = () => {
-  //   const currentId = this.state.selectedQuiz.id;
-  //   this.props.firestore.get({collection: 'quizzes', doc: currentId}).then((quiz) => {
-  //     const quizEmail =  quiz.get("email")
-  //     console.log(quizEmail);
-  //     if (this.state.userEmail === quizEmail) {
-  //       this.setState({editing: true});
-  //     } else {
-  //       console.log("false")
-  //     }
-  //   });
-  // }
-
-  // handleEditClick = () => {
-  //   this.setState({editing: true});
-  // }
-
   handleEditingQuizInList = () => {
     this.setState({
       editing: false,
@@ -134,7 +117,6 @@ class QuizControl extends React.Component {
   } 
     if ((isLoaded(auth)) && (auth.currentUser != null)) {
       this.state.userEmail  = auth.currentUser.email;
-      console.log(this.state.userEmail);
       if (this.state.editing ) {      
         currentlyVisibleState = 
           <EditQuizForm 
