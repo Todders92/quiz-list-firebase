@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import ReusableAnswerForm from "./ReusableAnswerForm";
-import { useFirestore } from 'react-redux-firebase'
-import firebase from "./firebase";
+import { useFirestore } from 'react-redux-firebase';
+import firebase from "./../firebase";
 
 function NewAnswerForm(props){
   console.log(props)
@@ -25,10 +25,11 @@ function NewAnswerForm(props){
     return;
   }
 
-  function updateQuizCounters() {
+  function updateQuizCounters(props) {
     let db = firebase.firestore();
-    db.collection("quizzes").doc(id).update({quizTaken: quizTaken++ });
-    db.collection("quizzes").doc(id).update({quizScore: quizScore + counter });
+    db.collection("quizzes").doc(props.id).update({quizTaken: 0 });
+    // db.collection("quizzes").doc(props.id).update({quizTaken: props.quizTaken++ });
+    // db.collection("quizzes").doc(props.id).update({quizScore: props.quizScore });
   }
 
   function tallyScore(event) {
@@ -44,7 +45,8 @@ function NewAnswerForm(props){
       if (props.quiz.answer3 === event.target.userAnswer3.value){
         counter +=1;
       }
-      updateQuizCounters(counter);
+      props.quiz.quizScore += counter;
+      updateQuizCounters(props);
     }
 
   return (
