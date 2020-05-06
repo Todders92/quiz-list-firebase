@@ -28,10 +28,7 @@ function NewAnswerForm(props){
   function updateQuizCounters(props) {
     console.log(props);
     let db = firebase.firestore();
-    // db.collection("quizzes").doc(props.quiz.id).update({quizTaken: 0 });
-    db.collection("quizzes").doc(props.quiz.id).update({quizTaken: props.quiz.quizTaken});
-    db.collection("quizzes").doc(props.quiz.id).update({quizScore: props.quiz.quizScore });
-    db.collection("quizzes").doc(props.quiz.id).update({quizAverage: props.quiz.quizAverage });
+    db.collection("quizzes").doc(props.quiz.id).update({quizTaken: props.quiz.quizTaken, quizScore: props.quiz.quizScore, quizAverage: props.quiz.quizAverage});
   }
 
   function tallyScore(event) {
