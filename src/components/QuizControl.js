@@ -19,7 +19,6 @@ class QuizControl extends React.Component {
       selectedQuiz: null,
       editing: false,
       userList: false,
-      userEmail: "string",
       userMatch: false
     };
   }
@@ -53,6 +52,10 @@ class QuizControl extends React.Component {
     const { dispatch } = this.props;
     const action = a.toggleForm();
     dispatch(action);
+  }
+
+  handleDisplayUserQuizzes = () => {
+    
   }
 
   handleChangingSelectedQuiz = (id) => {
@@ -193,9 +196,8 @@ class QuizControl extends React.Component {
         <React.Fragment>
           <Row>
           <Col md={3}>
-            <Button>Test</Button>
-            <Button>Test</Button>
-            <Button>Test</Button>
+            <Button onClick={this.handleDisplayUserQuizzes}>My Quizzes</Button>
+            <Button onClick={this.handleViewingUserList}>All Quizzes</Button>
           </Col>
           <Col md={9}>
             {currentlyVisibleState}
