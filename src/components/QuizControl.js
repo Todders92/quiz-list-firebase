@@ -87,10 +87,6 @@ class QuizControl extends React.Component {
 
         email: quiz.get("email"),
         id: quiz.id,
-
-        // quizScore: 0,
-        // quizTaken: 0,
-        // quizAverage: 0
       }
       this.setState({selectedQuiz: firestoreQuiz });
     });
@@ -145,6 +141,9 @@ class QuizControl extends React.Component {
     )
   } 
     if ((isLoaded(auth)) && (auth.currentUser != null)) {
+
+      // this.setState({userEmail: auth.currentUser.email});
+
       this.state.userEmail = auth.currentUser.email;
       if (this.state.editing ) {      
         currentlyVisibleState = 
@@ -155,21 +154,21 @@ class QuizControl extends React.Component {
       } else if (this.state.selectedQuiz != null) {
         if (this.state.userMatch === true) {
           currentlyVisibleState = 
-        <QuizDetail 
-          quiz = {this.state.selectedQuiz} 
-          userEmail = {this.state.userEmail}
-          onClickingDelete = {this.handleDeletingQuiz} 
-          onClickingEdit = {this.handleEditClick} />
-        buttonText = "Return to Quiz List";
+          <QuizDetail 
+            quiz = {this.state.selectedQuiz} 
+            userEmail = {this.state.userEmail}
+            onClickingDelete = {this.handleDeletingQuiz} 
+            onClickingEdit = {this.handleEditClick} />
+          buttonText = "Return to Quiz List";
         } else {
-        currentlyVisibleState = 
-        <AnswerQuizForm
-          quiz = {this.state.selectedQuiz} 
-          userEmail = {this.state.userEmail}
-          onClickingDelete = {this.handleDeletingQuiz} 
-          onClickingEdit = {this.handleEditClick}
-          onNewAnswerCreation={this.handleAddingNewAnswerToList} />;
-        buttonText = "Return to Quiz List";
+          currentlyVisibleState = 
+          <AnswerQuizForm
+            quiz = {this.state.selectedQuiz} 
+            userEmail = {this.state.userEmail}
+            onClickingDelete = {this.handleDeletingQuiz} 
+            onClickingEdit = {this.handleEditClick}
+            onNewAnswerCreation={this.handleAddingNewAnswerToList} />;
+          buttonText = "Return to Quiz List";
         }
       } else if (this.props.formVisibleOnPage) {
         currentlyVisibleState = 
