@@ -10,13 +10,16 @@ function NewQuizForm(props){
   function addQuizToFirestore(event) {
     event.preventDefault();
     console.log("in add Quiz to Firestore")
+    let defaultScore = 0;
     firestore.collection('quizzes').add(
       {
         email: props.userEmail,
 
         quizName: event.target.quizName.value,
-        quizScore: 0,
-        quizTaken: 0,
+        quizScore: defaultScore,
+        quizTaken: defaultScore,
+        quizAverage: defaultScore,
+
 
         question1: event.target.question1.value,
         answer1: event.target.answer1.value,
@@ -27,11 +30,6 @@ function NewQuizForm(props){
         question3: event.target.question3.value,
         answer3: event.target.answer3.value, 
         timeOpen: firestore.FieldValue.serverTimestamp(),
-
-        quizScore: 0,
-        quizTaken: 0,
-        quizAverage: 0
-
       }
     );
     props.onNewQuizCreation();

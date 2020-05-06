@@ -26,8 +26,9 @@ function NewAnswerForm(props){
   }
 
   function updateQuizCounters(props) {
+    console.log(props);
     let db = firebase.firestore();
-    db.collection("quizzes").doc(props.id).update({quizTaken: 0 });
+    db.collection("quizzes").doc(props.quiz.id).update({quizTaken: 0 });
     // db.collection("quizzes").doc(props.id).update({quizTaken: props.quizTaken++ });
     // db.collection("quizzes").doc(props.id).update({quizScore: props.quizScore });
   }
@@ -45,7 +46,7 @@ function NewAnswerForm(props){
       if (props.quiz.answer3 === event.target.userAnswer3.value){
         counter +=1;
       }
-      props.quiz.quizScore += counter;
+      // props.quiz.quizScore += counter;
       updateQuizCounters(props);
     }
 

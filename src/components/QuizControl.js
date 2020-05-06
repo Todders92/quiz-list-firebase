@@ -81,7 +81,11 @@ class QuizControl extends React.Component {
         answer3: quiz.get("answer3"),
 
         email: quiz.get("email"),
-        id: quiz.id
+        id: quiz.id,
+
+        // quizScore: 0,
+        // quizTaken: 0,
+        // quizAverage: 0
       }
       this.setState({selectedQuiz: firestoreQuiz });
     });
