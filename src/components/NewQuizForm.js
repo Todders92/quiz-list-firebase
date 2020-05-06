@@ -26,7 +26,12 @@ function NewQuizForm(props){
 
         question3: event.target.question3.value,
         answer3: event.target.answer3.value, 
-        timeOpen: firestore.FieldValue.serverTimestamp()
+        timeOpen: firestore.FieldValue.serverTimestamp(),
+
+        quizScore: 0,
+        quizTaken: 0,
+        quizAverage: 0
+
       }
     );
     props.onNewQuizCreation();
