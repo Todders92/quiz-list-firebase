@@ -28,14 +28,16 @@ function NewAnswerForm(props){
   function updateQuizCounters(props) {
     console.log(props);
     let db = firebase.firestore();
-    db.collection("quizzes").doc(props.quiz.id).update({quizTaken: 0 });
-    // db.collection("quizzes").doc(props.id).update({quizTaken: props.quizTaken++ });
-    // db.collection("quizzes").doc(props.id).update({quizScore: props.quizScore });
+    // db.collection("quizzes").doc(props.quiz.id).update({quizTaken: 0 });
+    db.collection("quizzes").doc(props.quiz.id).update({quizTaken: props.quiz.quizTaken});
+    db.collection("quizzes").doc(props.quiz.id).update({quizScore: props.quiz.quizScore });
+    db.collection("quizzes").doc(props.quiz.id).update({quizAverage: props.quiz.quizAverage });
   }
 
   function tallyScore(event) {
     event.preventDefault();
     let counter = 0;
+    let increment = 1;
     console.log(props.quiz.answer1)
       if (props.quiz.answer1 === event.target.userAnswer1.value){
         counter +=1;
@@ -46,7 +48,9 @@ function NewAnswerForm(props){
       if (props.quiz.answer3 === event.target.userAnswer3.value){
         counter +=1;
       }
-      // props.quiz.quizScore += counter;
+      props.quiz.quizScore += counter;
+      props.quiz.quizTaken += increment;
+      props.quiz.quizAverage = props.quiz.quizScore/props.quiz.quizTaken;
       updateQuizCounters(props);
     }
 

@@ -14,9 +14,9 @@ function QuizDetail(props){
       {/* <h5>{quiz.answer2}</h5> */}
       <h3>{quiz.question3}</h3> 
       {/* <h5>{quiz.answer3}</h5> */}
-      <h5>{quiz.quizScore}</h5> 
-      <h5>{quiz.quizTaken}</h5> 
-      <h5>{quiz.quizAverage}</h5> 
+      <h5>Combined scores: {quiz.quizScore}</h5> 
+      <h5>Times taken: {quiz.quizTaken}</h5> 
+      <h5>Average score: {quiz.quizAverage}</h5> 
       <p>{props.email}</p>
       <p><em>{quiz.detail}</em></p>
       <button onClick={ props.onClickingEdit }>Update Quiz</button>

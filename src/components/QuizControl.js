@@ -80,6 +80,11 @@ class QuizControl extends React.Component {
         question3: quiz.get("question3"),
         answer3: quiz.get("answer3"),
 
+        quizScore: quiz.get("quizScore"),
+        quizTaken: quiz.get("quizTaken"),
+        quizAverage: quiz.get("quizAverage"),
+
+
         email: quiz.get("email"),
         id: quiz.id,
 

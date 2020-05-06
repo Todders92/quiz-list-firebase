@@ -25,6 +25,9 @@ function UserQuizes(props){
           question2={quiz.question2}
           question3={quiz.question3}
           email={quiz.email}
+          quizScore={quiz.quizScore}
+          quizTaken={quiz.quizTaken}
+          quizAverage={quiz.quizAverage}
           id={quiz.id}
           key={quiz.id}/>
         })}
