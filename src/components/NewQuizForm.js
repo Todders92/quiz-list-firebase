@@ -17,7 +17,6 @@ function NewQuizForm(props){
         quizName: event.target.quizName.value,
         quizScore: event.target.quizScore.value,
         quizTaken: event.target.quizTaken.value,
-        quizAverage: event.target.quizAverage.value,
 
         question1: event.target.question1.value,
         answer1: event.target.answer1.value,
