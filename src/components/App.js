@@ -5,6 +5,7 @@ import Signin from "./Signin";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
+import './App.css';
 
 function App(){
   return ( 

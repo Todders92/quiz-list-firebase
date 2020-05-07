@@ -14,16 +14,14 @@ function Header(){
       <QuizHeader>
         <h1>Quiz List</h1>
       </QuizHeader>
-      <ul>
-        <li>
-          <div class="homeLink">
-            <Link to="/">Quiz list</Link>
-          </div>
-        </li>
-        <li>
-          <Link to="/signin">Sign In</Link>
-        </li>
-      </ul>
+        <div className="homeLink text-center">
+          <p>
+              <Link to="/"><button type="button">Quiz list</button></Link>
+          </p>
+          <p>
+              <Link to="/signin"><button type="button">Sign In</button></Link>
+          </p>
+      </div>
     </React.Fragment>
   );
 }

@@ -137,7 +137,9 @@ class QuizControl extends React.Component {
     if ((isLoaded(auth)) && (auth.currentUser == null)) {
     return (
       <React.Fragment>
-          <h3>You must be signed in to access the queue.</h3>
+          <div className = "mustBeSignedIn text-center">
+            <h3>You must be signed in to access the queue.</h3>
+          </div>
       </React.Fragment>
     )
   } 
