@@ -38,7 +38,7 @@ class QuizControl extends React.Component {
 
   handleAddingNewQuizToList = () => {
     const { dispatch } = this.props;
-    const action = a.toggleForm();
+    const action = a.toggleQuizList();
     dispatch(action);
   }
 
@@ -48,14 +48,21 @@ class QuizControl extends React.Component {
     dispatch(action);
   }
 
-  handleViewingUserList = () => {
-    const { dispatch } = this.props;
-    const action = a.toggleForm();
-    dispatch(action);
-  }
+  // handleViewingUserList = () => {
+  //   const { dispatch } = this.props;
+  //   const action = a.toggleForm();
+  //   dispatch(action);
+  // }
 
   handleDisplayUserQuizzes = () => {
-    
+    const { dispatch } = this.props;
+    const action = a.toggleQuizList();
+    dispatch(action);
+
+  // handleDisplayAllQuizzes = () => {
+  //   const { dispatch } = this.props;
+  //   const action = a.toggleAllQuizes();
+  //   dispatch(action);
   }
 
   handleChangingSelectedQuiz = (id) => {
@@ -185,19 +192,32 @@ class QuizControl extends React.Component {
           userEmail = {this.state.userEmail} 
           onQuizSelection={this.handleChangingSelectedQuiz} />;
         buttonText = "Add Quiz";
-      } else {
+      } else if (userList === true) {
+          currentlyVisibleState = 
+          <UserQuizes
+            userEmail = {this.state.userEmail} 
+            onQuizSelection={this.handleChangingSelectedQuiz}
+            // onClickingMyQuizzes={this.handleDisplayUserQuizzes}
+            // onClickingAllquizzes={this.handleDisplayAllQuizzes} 
+            />;
+          buttonText = "Add Quiz";
+        } else {
         currentlyVisibleState = 
         <QuizList
           userEmail = {this.state.userEmail} 
-          onQuizSelection={this.handleChangingSelectedQuiz} />;
+          onQuizSelection={this.handleChangingSelectedQuiz}
+          // onClickingMyQuizzes={this.handleDisplayUserQuizzes}
+          // onClickingAllquizzes={this.handleDisplayAllQuizzes} 
+          />;
         buttonText = "Add Quiz";
+        }
       }
       return (
         <React.Fragment>
           <Row>
           <Col md={3}>
-            <Button onClick={this.handleDisplayUserQuizzes}>My Quizzes</Button>
-            <Button onClick={this.handleViewingUserList}>All Quizzes</Button>
+            <Button>My Quizzes</Button>
+            <Button>All Quizzes</Button>
           </Col>
           <Col md={9}>
             {currentlyVisibleState}

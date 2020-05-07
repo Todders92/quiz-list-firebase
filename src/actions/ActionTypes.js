@@ -1,3 +1,5 @@
 export const DELETE_QUIZ = 'DELETE_QUIZ';
 export const TOGGLE_FORM = 'TOGGLE_FORM';
 export const UPDATE_TIME = 'UPDATE_TIME';
+export const TOGGLE_QUIZ_LIST = "TOGGLE_QUIZ_LIST";
+// export const TOGGLE_ALL_QUIZES = "TOGGLE_ALL_QUIZES";
