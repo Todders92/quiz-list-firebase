@@ -183,7 +183,7 @@ class QuizControl extends React.Component {
           userEmail = {this.state.userEmail} 
           onNewQuizCreation={this.handleAddingNewQuizToList}  />;
           buttonText = "Return to Quiz List";
-      } else if (this.state.userList) {
+      } else if (this.props.quizVisibleOnPage) {
         currentlyVisibleState = 
         <UserQuizes
           userEmail = {this.state.userEmail} 
@@ -221,12 +221,14 @@ class QuizControl extends React.Component {
 
 
 QuizControl.propTypes = {
-  formVisibleOnPage: PropTypes.bool
+  formVisibleOnPage: PropTypes.bool,
+  quizVisibleOnPage: PropTypes.bool
 };
 
 const mapStateToProps = state => {
   return {
-    formVisibleOnPage: state.formVisibleOnPage
+    formVisibleOnPage: state.formVisibleOnPage,
+    quizVisibleOnPage: state.quizVisibleOnPage
   }
 }
 
