@@ -21,13 +21,10 @@ function UserQuizes(props){
         return <Quiz
           whenQuizClicked = { props.onQuizSelection }
           quizName={quiz.quizName}
-          // question1={quiz.question1}
-          // question2={quiz.question2}
-          // question3={quiz.question3}
           email={quiz.email}
-          quizScore={quiz.quizScore}
-          quizTaken={quiz.quizTaken}
-          quizAverage={quiz.quizAverage}
+          // quizScore={quiz.quizScore}
+          // quizTaken={quiz.quizTaken}
+          // quizAverage={quiz.quizAverage}
           id={quiz.id}
           key={quiz.id}/>
         })}

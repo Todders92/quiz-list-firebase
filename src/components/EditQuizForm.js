@@ -28,6 +28,7 @@ function EditQuizForm (props) {
       <ReusableQuizForm 
         formSubmissionHandler={handleEditQuizFormSubmission}
         buttonText="Update Quiz" />
+        // button2Text="Return to Quiz list" />
     </React.Fragment>
   );
 }

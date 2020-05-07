@@ -12,11 +12,13 @@ function Header(){
   return (
     <React.Fragment>
       <QuizHeader>
-        Quiz List
+        <h1>Quiz List</h1>
       </QuizHeader>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <div class="homeLink">
+            <Link to="/">Quiz list</Link>
+          </div>
         </li>
         <li>
           <Link to="/signin">Sign In</Link>

@@ -9,7 +9,6 @@ function NewQuizForm(props){
 
   function addQuizToFirestore(event) {
     event.preventDefault();
-    console.log("in add Quiz to Firestore")
     let defaultScore = 0;
     firestore.collection('quizzes').add(
       {
@@ -40,7 +39,8 @@ function NewQuizForm(props){
     <React.Fragment>
       <ReusableQuizForm 
         formSubmissionHandler={addQuizToFirestore}
-        buttonText="Submit questions" />
+        buttonText="Submit questions"
+        button2Text="Return to Quiz list" />
     </React.Fragment>
   );
 }

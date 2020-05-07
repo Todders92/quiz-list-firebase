@@ -126,6 +126,7 @@ class QuizControl extends React.Component {
     let buttonText = null;
     let button2Text = null;
     const auth = this.props.firebase.auth();
+    // this.setState({userEmail: auth.currentUser.email});
     if (!isLoaded(auth)) {
     return (
       <React.Fragment>
@@ -136,7 +137,7 @@ class QuizControl extends React.Component {
     if ((isLoaded(auth)) && (auth.currentUser == null)) {
     return (
       <React.Fragment>
-          <h1>You must be signed in to access the queue.</h1>
+          <h3>You must be signed in to access the queue.</h3>
       </React.Fragment>
     )
   } 
@@ -148,6 +149,7 @@ class QuizControl extends React.Component {
             quiz = {this.state.selectedQuiz} 
             onEditQuiz = {this.handleEditingQuizInList} />
           buttonText = "Return to Quiz List";
+          button2Text = "Return to Quiz List";
       } else if (this.state.selectedQuiz != null) {
         if (this.state.userMatch === true) {
           currentlyVisibleState = 
@@ -157,6 +159,7 @@ class QuizControl extends React.Component {
             onClickingDelete = {this.handleDeletingQuiz} 
             onClickingEdit = {this.handleEditClick} />
           buttonText = "Return to Quiz List";
+          button2Text = "Return to Quiz List";
         } else {
           currentlyVisibleState = 
           <AnswerQuizForm
@@ -166,6 +169,7 @@ class QuizControl extends React.Component {
             onClickingEdit = {this.handleEditClick}
             onNewAnswerCreation={this.handleAddingNewAnswerToList} />;
           buttonText = "Return to Quiz List";
+          button2Text = "Return to Quiz List";
         }
       } else if (this.props.formVisibleOnPage) {
         currentlyVisibleState = 
@@ -173,6 +177,7 @@ class QuizControl extends React.Component {
           userEmail = {this.state.userEmail} 
           onNewQuizCreation={this.handleAddingNewQuizToList}  />;
           buttonText = "Return to Quiz List";
+          button2Text = "Return to Quiz List";
       } else if (this.props.quizVisibleOnPage) {
         currentlyVisibleState = 
         <UserQuizes
@@ -194,7 +199,6 @@ class QuizControl extends React.Component {
           <Row>
           <Col md={3}>
             <Button onClick={this.handleDisplayUserQuizzes}>{ button2Text }</Button>
-            {/* <Button>All Quizzes</Button>   */}
           </Col>
           <Col md={9}>
             {currentlyVisibleState}
