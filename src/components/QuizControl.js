@@ -57,12 +57,8 @@ class QuizControl extends React.Component {
   handleDisplayUserQuizzes = () => {
     const { dispatch } = this.props;
     const action = a.toggleQuizList();
+    console.log("my quizzes button works");
     dispatch(action);
-
-  // handleDisplayAllQuizzes = () => {
-  //   const { dispatch } = this.props;
-  //   const action = a.toggleAllQuizes();
-  //   dispatch(action);
   }
 
   handleChangingSelectedQuiz = (id) => {
@@ -135,6 +131,7 @@ class QuizControl extends React.Component {
   render(){
     let currentlyVisibleState = null;
     let buttonText = null;
+    let button2Text = null;
     const auth = this.props.firebase.auth();
     if (!isLoaded(auth)) {
     return (
@@ -192,15 +189,7 @@ class QuizControl extends React.Component {
           userEmail = {this.state.userEmail} 
           onQuizSelection={this.handleChangingSelectedQuiz} />;
         buttonText = "Add Quiz";
-      } else if (userList === true) {
-          currentlyVisibleState = 
-          <UserQuizes
-            userEmail = {this.state.userEmail} 
-            onQuizSelection={this.handleChangingSelectedQuiz}
-            // onClickingMyQuizzes={this.handleDisplayUserQuizzes}
-            // onClickingAllquizzes={this.handleDisplayAllQuizzes} 
-            />;
-          buttonText = "Add Quiz";
+        button2Text = "All Quizzes";
         } else {
         currentlyVisibleState = 
         <QuizList
@@ -210,25 +199,26 @@ class QuizControl extends React.Component {
           // onClickingAllquizzes={this.handleDisplayAllQuizzes} 
           />;
         buttonText = "Add Quiz";
+        button2Text = "My Quizzes";
         }
       }
       return (
         <React.Fragment>
           <Row>
           <Col md={3}>
-            <Button>My Quizzes</Button>
-            <Button>All Quizzes</Button>
+            <Button onClick={this.handleDisplayUserQuizzes}>{ button2Text }</Button>
+            {/* <Button>All Quizzes</Button>   */}
           </Col>
           <Col md={9}>
             {currentlyVisibleState}
-            <button onClick={this.handleClick}>{buttonText}</button>
+            <button onClick={this.handleClick}>{buttonText}</button>  
           </Col>
           </Row>
         </React.Fragment>
       );
     }
   }
-}
+
 
 QuizControl.propTypes = {
   formVisibleOnPage: PropTypes.bool

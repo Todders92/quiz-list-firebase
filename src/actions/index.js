@@ -17,7 +17,7 @@ export const updateTime = (id, formattedWaitTime) => ({
 
 export const toggleQuizList = () => ({
   type: c.TOGGLE_QUIZ_LIST
-})
+});
 
 // export const toggleAllQuizes = () => ({
 //   type: c.TOGGLE_ALL_QUIZES,
