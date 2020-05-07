@@ -5,10 +5,6 @@ function ReusableQuizForm(props) {
   return (
     <React.Fragment>
       <form onSubmit={props.formSubmissionHandler}>
-      {/* <input
-          type='hidden'
-          name='email'
-          value={this.state.userEmail} /> */}
           <input
           type='text'
           name='quizName'

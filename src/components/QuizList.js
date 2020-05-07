@@ -15,6 +15,7 @@ function QuizList(props){
 if (isLoaded(quizzes)) {
   return (
     <React.Fragment>
+      <h1>All Quizzes</h1>
       <hr/>
       {quizzes.map((quiz) => {
       return <Quiz

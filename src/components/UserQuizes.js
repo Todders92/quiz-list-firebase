@@ -2,10 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Quiz from "./Quiz";
 import { useSelector } from 'react-redux'
-import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase'
+import { useFirestoreConnect, isLoaded } from 'react-redux-firebase'
 
 function UserQuizes(props){
-  console.log("userlist reached")
 
   useFirestoreConnect([
     { collection: 'quizzes' }
@@ -16,14 +15,15 @@ function UserQuizes(props){
   if (isLoaded(quizzes)) {
     return (
       <React.Fragment>
+        <h1>My Quizzes</h1>
         <hr/>
         {quizzes.filter(quiz => props.userEmail === quiz.email).map((quiz) => {
         return <Quiz
           whenQuizClicked = { props.onQuizSelection }
           quizName={quiz.quizName}
-          question1={quiz.question1}
-          question2={quiz.question2}
-          question3={quiz.question3}
+          // question1={quiz.question1}
+          // question2={quiz.question2}
+          // question3={quiz.question3}
           email={quiz.email}
           quizScore={quiz.quizScore}
           quizTaken={quiz.quizTaken}

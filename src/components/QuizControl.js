@@ -48,16 +48,9 @@ class QuizControl extends React.Component {
     dispatch(action);
   }
 
-  // handleViewingUserList = () => {
-  //   const { dispatch } = this.props;
-  //   const action = a.toggleForm();
-  //   dispatch(action);
-  // }
-
   handleDisplayUserQuizzes = () => {
     const { dispatch } = this.props;
     const action = a.toggleQuizList();
-    console.log("my quizzes button works");
     dispatch(action);
   }
 
@@ -148,9 +141,6 @@ class QuizControl extends React.Component {
     )
   } 
     if ((isLoaded(auth)) && (auth.currentUser != null)) {
-
-      // this.setState({userEmail: auth.currentUser.email});
-
       this.state.userEmail = auth.currentUser.email;
       if (this.state.editing ) {      
         currentlyVisibleState = 
@@ -194,10 +184,7 @@ class QuizControl extends React.Component {
         currentlyVisibleState = 
         <QuizList
           userEmail = {this.state.userEmail} 
-          onQuizSelection={this.handleChangingSelectedQuiz}
-          // onClickingMyQuizzes={this.handleDisplayUserQuizzes}
-          // onClickingAllquizzes={this.handleDisplayAllQuizzes} 
-          />;
+          onQuizSelection={this.handleChangingSelectedQuiz} />;
         buttonText = "Add Quiz";
         button2Text = "My Quizzes";
         }

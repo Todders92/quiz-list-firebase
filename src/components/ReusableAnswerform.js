@@ -7,10 +7,6 @@ function ReusableAnswerForm(props) {
   return (
     <React.Fragment>
       <form onSubmit={props.formSubmissionHandler}>
-      {/* <input
-          type='hidden'
-          name='email'
-          value={this.state.userEmail} /> */}
           <h1> {quiz.quizName} </h1>
 
           <h3> {quiz.question1} </h3>      
